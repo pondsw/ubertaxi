@@ -26,4 +26,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function owned_vouchers()
+    {
+        return $this->hasMany('App\Owned_voucher');
+    }
+
+    public function redeemed_discounts()
+    {
+        return $this->hasMany('App\Redeemed_discount');
+    }
+
+    public function redeemed_vouchers()
+    {
+        return $this->hasMany('App\Redeemed_voucher');
+    }
 }
