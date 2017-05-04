@@ -15,4 +15,8 @@ class Owned_voucher extends Model
     {
         return $this->belongsTo('App\Voucher');
     }
+
+    public function redeemed_voucher(){
+        return $this->hasMany('App\Redeemed_voucher');
+    }
 }
