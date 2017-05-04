@@ -8,13 +8,9 @@ class Redeemed_voucher extends Model
 {
     protected $fillable = ['redeem_date'];
 
-    public function voucher()
+    public function owned_voucher()
     {
-        return $this->belongsTo('App\Voucher');
+      return $this->belongsTo('App\Owned_voucher');
     }
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }
