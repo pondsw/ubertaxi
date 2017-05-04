@@ -17,7 +17,7 @@
                         <a href="{{ url('promotion') }}">Promotion</a>
                     </li>
                     <li>
-                        <a href="{{ url('voucher') }}">Voucher</a>
+                        <a href="{{ url('vouchers') }}">Voucher</a>
                     </li>
                     <li>
                         <a href="#">Services</a>
