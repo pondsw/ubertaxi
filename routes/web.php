@@ -24,9 +24,7 @@ Route::get('promotion', function () {
 // });
 Route::get('vouchers', 'VouchersController@index');
 
-Route::get('pro1', function () {
-    return view('promotions.pro1');
-});
+
 
 // $ composer require guzzlehttp/guzzle:~6.0
 
