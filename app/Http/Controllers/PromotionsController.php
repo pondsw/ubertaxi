@@ -17,7 +17,7 @@ class PromotionsController extends Controller
         ]);
         $resBody = $response->getBody();
         $res = json_decode($resBody);
-        return view('singers.index', [
+        return view('promotion.index', [
             'statusCode' => $response->getStatusCode(),
             'responseHeader' => $response->getHeader('content-type')[0],
             'success' => $res->success,
@@ -38,7 +38,7 @@ class PromotionsController extends Controller
 
         // Todo: request album from /api/singers/$id/albums
 
-        return view('singers.show', [
+        return view('promotion.show', [
             'statusCode' => $response->getStatusCode(),
             'responseHeader' => $response->getHeader('content-type')[0],
             'success' => !is_null($res)? $res->success: false,
@@ -48,6 +48,6 @@ class PromotionsController extends Controller
     }
 
     public function create() {
-        return view('singers.create');
+        return view('promotion.create');
     }
 }
