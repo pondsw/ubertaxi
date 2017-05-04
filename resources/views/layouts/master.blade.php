@@ -9,9 +9,13 @@
         @include('layouts._navbar')
         <div class="container">
             @yield('content')
+            <hr>
+            @include('layouts._footer')
         </div>
+
 
         <script src="/js/app.js" charset="utf-8"></script>
         @yield('script')
+
     </body>
 </html>

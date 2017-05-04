@@ -19,6 +19,10 @@ Route::get('promotion', function () {
     return view('promotion');
 });
 
+Route::get('voucher', function () {
+    return view('voucher');
+});
+
 Route::get('pro1', function () {
     return view('promotions.pro1');
 });

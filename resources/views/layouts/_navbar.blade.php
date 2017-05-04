@@ -8,13 +8,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">Home</a>
+                <a class="navbar-brand" href="{{ url('/') }}">UBER</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="{{ url('promotion') }}">Promotion</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('voucher') }}">Voucher</a>
                     </li>
                     <li>
                         <a href="#">Services</a>
