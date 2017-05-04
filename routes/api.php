@@ -19,3 +19,6 @@ use Illuminate\Http\Request;
 
 Route::get('singers/{id}/albums', 'Api\SingersController@albums');
 Route::resource('singers', 'Api\SingersController');
+
+Route::get('vouchers','Api\VouchersController@index');
+Route::get('vouchers/{id}','Api\VouchersController@show');
