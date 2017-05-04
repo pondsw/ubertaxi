@@ -39,7 +39,7 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function login(Request $request){
+    // public function login(Request $request){
     //   $this ->validate($request, [
     //     'email' => 'required|email',
     //     'password' => 'required'
@@ -49,6 +49,6 @@ class LoginController extends Controller
     //   'email','=',$form_input['email']
     // )->first();
     //   //domp and die
-    //   dd($request);
-    }
+      // dd($request);
+    // }
 }
