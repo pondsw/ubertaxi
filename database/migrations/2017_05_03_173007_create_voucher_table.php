@@ -15,10 +15,11 @@ class CreateVoucherTable extends Migration
     {
       Schema::create('vouchers', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('code');
+          $table->integer('point')->unsigned();
           $table->string('detail');
           $table->date('exp_date');
           $table->integer('limit_number_of_use');
+          $table->string('image_path');
           $table->timestamps();
           $table->softDeletes();
       });

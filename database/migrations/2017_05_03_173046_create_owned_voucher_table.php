@@ -17,6 +17,7 @@ class CreateOwnedVoucherTable extends Migration
           $table->increments('id');
           $table->integer('user_id')->unsigned();
           $table->integer('voucher_id')->unsigned();
+          $table->string('code');
           $table->timestamps();
           $table->softDeletes();
 

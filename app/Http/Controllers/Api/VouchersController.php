@@ -40,10 +40,11 @@ class VouchersController extends Controller
     public function store(Request $request)
     {
         $vouchers = new \App\Voucher;
-        $vouchers->code = trim($request->code);
+        $vouchers->point = trim($request->point);
         $vouchers->detail = trim($request->detail);
         $vouchers->exp_date = $request->exp_date;
         $vouchers->limit_number_of_use = $request->limit_number_of_use;
+        $vouchers->image_path = $request->image_path;
 
         if (!empty($vouchers->code) && !empty($vouchers->detail) && !empty($vouchers->exp_date) && $vouchers->save()){
             return [

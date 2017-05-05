@@ -38,6 +38,7 @@ class OwnedVoucherController extends Controller
       $voucher = new \App\Owned_voucher;
       $voucher->voucher_id = $request->voucher_id;
       $voucher->user_id = $request->user_id;
+      $voucher->code = $request->code;
 
       if ($voucher->save()){
           return [
