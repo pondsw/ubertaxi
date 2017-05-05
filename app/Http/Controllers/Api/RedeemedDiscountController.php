@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VouchersController extends Controller
+class RedeemedDiscountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class VouchersController extends Controller
      */
     public function index()
     {
-        $vouchers = \App\Voucher::all();
-        return [
-            'success' => true,
-            'data' => $vouchers
-        ];
+
     }
 
     /**
@@ -39,25 +35,23 @@ class VouchersController extends Controller
      */
     public function store(Request $request)
     {
-        $vouchers = new \App\Voucher;
-        $vouchers->code = trim($request->code);
-        $vouchers->detail = trim($request->detail);
-        $vouchers->exp_date = $request->exp_date;
-        $vouchers->limit_number_of_use = $request->limit_number_of_use;
+      $discount = new \App\Redeemed_discount;
+      $discount->discount_id = $request->discount_id;
+      $discount->user_id = $request->user_id;
+      $discount->redeem_date = date("Y-m-d");
 
-        if (!empty($vouchers->code) && !empty($vouchers->detail) && !empty($vouchers->exp_date) && $vouchers->save()){
-            return [
-                'success' => true,
-                'data' => "Voucher was saved with id: {$vouchers->id}",
-                'id' => $vouchers->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+      if ($discount->save()){
+          return [
+              'success' => true,
+              'data' => "Redeemed discount was saved with id: {$discount->id}",
+              'id' => $discount->id
+          ];
+      } else {
+          return [
+              'success' => false,
+              'data' => "Some error occurred"
+          ];
+      }
     }
 
     /**
@@ -68,33 +62,18 @@ class VouchersController extends Controller
      */
     public function show($id)
     {
-        $vouchers = \App\Voucher::find($id);
-        if (!is_null($vouchers))
+        $discount = \App\Redeemed_discount::find($id);
+        if (!is_null($discount))
             return [
                 'success' => true,
-                'data' => $vouchers
+                'data' => $discount
             ];
         return [
             'success' => false,
-            'data' => 'Voucher not found'
+            'data' => 'Redeemed discount not found'
         ];
     }
 
-    public function owned_vouchers($id)
-    {
-        $vouchers = \App\Voucher::find($id);
-        if (!is_null($vouchers)) {
-            return [
-                'success' => true,
-                'data' => $vouchers->owned_vouchers()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'Voucher not found'
-            ];
-        }
-    }
 
     /**
      * Show the form for editing the specified resource.

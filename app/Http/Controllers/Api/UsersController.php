@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SingersController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class SingersController extends Controller
      */
     public function index()
     {
-        $singers = \App\Singer::all();
+        $users = \App\User::all();
         return [
             'success' => true,
-            'data' => $singers
+            'data' => $users
         ];
     }
 
@@ -39,21 +39,7 @@ class SingersController extends Controller
      */
     public function store(Request $request)
     {
-        $singer = new \App\Singer;
-        $singer->name = trim($request->name);
-        if (!empty($singer->name) && $singer->save()){
-            return [
-                'success' => true,
-                'data' => "Singer '{$singer->name}' was saved with id: {$singer->id}",
-                'id' => $singer->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+        //
     }
 
     /**
@@ -64,33 +50,62 @@ class SingersController extends Controller
      */
     public function show($id)
     {
-        $singer = \App\Singer::find($id);
-        if (!is_null($singer))
+        $user = \App\User::find($id);
+        if (!is_null($user))
             return [
                 'success' => true,
-                'data' => $singer
+                'data' => $user
             ];
         return [
             'success' => false,
-            'data' => 'Singer not found'
+            'data' => 'User not found'
         ];
     }
 
-    public function albums($id)
+    public function owned_vouchers($id)
     {
-        $singer = \App\Singer::find($id);
-        if (!is_null($singer)) {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
             return [
                 'success' => true,
-                'data' => [
-                    'count' => $singer->albums()->count(),
-                    'albums' => $singer->albums()->get()
-                ]
+                'data' => $user->owned_vouchers()->get()
             ];
         } else {
             return [
                 'success' => false,
-                'data' => 'Singer not found'
+                'data' => 'User not found'
+            ];
+        }
+    }
+
+    public function redeemed_discounts($id)
+    {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
+            return [
+                'success' => true,
+                'data' => $user->redeemed_discounts()->get()
+            ];
+        } else {
+            return [
+                'success' => false,
+                'data' => 'User not found'
+            ];
+        }
+    }
+
+    public function redeemed_vouchers($id)
+    {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
+            return [
+                'success' => true,
+                'data' => $user->redeemed_vouchers()->get()
+            ];
+        } else {
+            return [
+                'success' => false,
+                'data' => 'User not found'
             ];
         }
     }
