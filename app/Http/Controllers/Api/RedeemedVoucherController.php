@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PromotionsController extends Controller
+class RedeemedVoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        $promotions = \App\Promotion::all();
-        return [
-            'success' => true,
-            'data' => $promotions
-        ];
+
     }
 
     /**
@@ -39,26 +35,22 @@ class PromotionsController extends Controller
      */
     public function store(Request $request)
     {
-        $promotion = new \App\Promotion;
-        $promotion->name = trim($request->name);
-        $promotion->detail = trim($request->detail);
-        $promotion->start_date = $request->start_date;
-        $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
+      $voucher = new \App\Redeemed_voucher;
+      $voucher->owned_voucher_id = $request->owned_voucher_id;
+      $voucher->redeem_date = date("Y-m-d");
 
-        if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
-            return [
-                'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+      if ($voucher->save()){
+          return [
+              'success' => true,
+              'data' => "Redeemed voucher was saved with id: {$vouchers->id}",
+              'id' => $vouchers->id
+          ];
+      } else {
+          return [
+              'success' => false,
+              'data' => "Some error occurred"
+          ];
+      }
     }
 
     /**
@@ -69,33 +61,18 @@ class PromotionsController extends Controller
      */
     public function show($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion))
+        $voucher = \App\Redeemed_voucher::find($id);
+        if (!is_null($voucher))
             return [
                 'success' => true,
-                'data' => $promotion
+                'data' => $voucher
             ];
         return [
             'success' => false,
-            'data' => 'Promotion not found'
+            'data' => 'Redeemed voucher not found'
         ];
     }
 
-    public function discount($id)
-    {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion)) {
-            return [
-                'success' => true,
-                'data' => $promotion->discount()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'Promotion not found'
-            ];
-        }
-    }
 
     /**
      * Show the form for editing the specified resource.

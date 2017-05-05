@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PromotionsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        $promotions = \App\Promotion::all();
+        $users = \App\User::all();
         return [
             'success' => true,
-            'data' => $promotions
+            'data' => $users
         ];
     }
 
@@ -39,26 +39,7 @@ class PromotionsController extends Controller
      */
     public function store(Request $request)
     {
-        $promotion = new \App\Promotion;
-        $promotion->name = trim($request->name);
-        $promotion->detail = trim($request->detail);
-        $promotion->start_date = $request->start_date;
-        $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
-
-        if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
-            return [
-                'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+        //
     }
 
     /**
@@ -69,30 +50,62 @@ class PromotionsController extends Controller
      */
     public function show($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion))
+        $user = \App\User::find($id);
+        if (!is_null($user))
             return [
                 'success' => true,
-                'data' => $promotion
+                'data' => $user
             ];
         return [
             'success' => false,
-            'data' => 'Promotion not found'
+            'data' => 'User not found'
         ];
     }
 
-    public function discount($id)
+    public function owned_vouchers($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion)) {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
             return [
                 'success' => true,
-                'data' => $promotion->discount()->get()
+                'data' => $user->owned_vouchers()->get()
             ];
         } else {
             return [
                 'success' => false,
-                'data' => 'Promotion not found'
+                'data' => 'User not found'
+            ];
+        }
+    }
+
+    public function redeemed_discounts($id)
+    {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
+            return [
+                'success' => true,
+                'data' => $user->redeemed_discounts()->get()
+            ];
+        } else {
+            return [
+                'success' => false,
+                'data' => 'User not found'
+            ];
+        }
+    }
+
+    public function redeemed_vouchers($id)
+    {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
+            return [
+                'success' => true,
+                'data' => $user->redeemed_vouchers()->get()
+            ];
+        } else {
+            return [
+                'success' => false,
+                'data' => 'User not found'
             ];
         }
     }

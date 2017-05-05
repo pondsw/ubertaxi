@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PromotionsController extends Controller
+class RedeemedDiscountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        $promotions = \App\Promotion::all();
-        return [
-            'success' => true,
-            'data' => $promotions
-        ];
+
     }
 
     /**
@@ -39,26 +35,23 @@ class PromotionsController extends Controller
      */
     public function store(Request $request)
     {
-        $promotion = new \App\Promotion;
-        $promotion->name = trim($request->name);
-        $promotion->detail = trim($request->detail);
-        $promotion->start_date = $request->start_date;
-        $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
+      $discount = new \App\Redeemed_discount;
+      $discount->discount_id = $request->discount_id;
+      $discount->user_id = $request->user_id;
+      $discount->redeem_date = date("Y-m-d");
 
-        if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
-            return [
-                'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+      if ($discount->save()){
+          return [
+              'success' => true,
+              'data' => "Redeemed discount was saved with id: {$discount->id}",
+              'id' => $discount->id
+          ];
+      } else {
+          return [
+              'success' => false,
+              'data' => "Some error occurred"
+          ];
+      }
     }
 
     /**
@@ -69,33 +62,18 @@ class PromotionsController extends Controller
      */
     public function show($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion))
+        $discount = \App\Redeemed_discount::find($id);
+        if (!is_null($discount))
             return [
                 'success' => true,
-                'data' => $promotion
+                'data' => $discount
             ];
         return [
             'success' => false,
-            'data' => 'Promotion not found'
+            'data' => 'Redeemed discount not found'
         ];
     }
 
-    public function discount($id)
-    {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion)) {
-            return [
-                'success' => true,
-                'data' => $promotion->discount()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'Promotion not found'
-            ];
-        }
-    }
 
     /**
      * Show the form for editing the specified resource.

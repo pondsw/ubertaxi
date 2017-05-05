@@ -17,5 +17,18 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('singers/{id}/albums', 'Api\SingersController@albums');
-Route::resource('singers', 'Api\SingersController');
+Route::get('promotions/{id}/discount', 'Api\PromotionsController@discount');
+Route::resource('promotions', 'Api\PromotionsController');
+
+Route::resource('vouchers', 'Api\VouchersController');
+
+Route::get('users/{id}/owned_vouchers', 'Api\UsersController@owned_vouchers');
+Route::get('users/{id}/redeemed_discounts', 'Api\UsersController@redeemed_discounts');
+Route::get('users/{id}/redeemed_vouchers', 'Api\UsersController@redeemed_vouchers');
+Route::resource('users', 'Api\UsersController');
+
+Route::resource('redeemed_discounts', 'Api\RedeemedDiscountController');
+
+Route::resource('redeemed_vouchers', 'Api\RedeemedVoucherController');
+
+Route::resource('owned_vouchers', 'Api\OwnedVoucherController');

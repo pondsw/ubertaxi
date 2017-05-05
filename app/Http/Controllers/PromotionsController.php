@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PromotionsController extends Controller
 {
-    private $api = "http://wongklom.dev/api/";
+    private $api = "http://ubertaxi.dev/api/";
 
     public function index()
     {

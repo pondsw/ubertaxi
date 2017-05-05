@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PromotionsController extends Controller
+class VouchersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        $promotions = \App\Promotion::all();
+        $vouchers = \App\Voucher::all();
         return [
             'success' => true,
-            'data' => $promotions
+            'data' => $vouchers
         ];
     }
 
@@ -39,18 +39,18 @@ class PromotionsController extends Controller
      */
     public function store(Request $request)
     {
-        $promotion = new \App\Promotion;
-        $promotion->name = trim($request->name);
-        $promotion->detail = trim($request->detail);
-        $promotion->start_date = $request->start_date;
-        $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
+        $vouchers = new \App\Voucher;
+        $vouchers->point = trim($request->point);
+        $vouchers->detail = trim($request->detail);
+        $vouchers->exp_date = $request->exp_date;
+        $vouchers->limit_number_of_use = $request->limit_number_of_use;
+        $vouchers->image_path = $request->image_path;
 
-        if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
+        if (!empty($vouchers->code) && !empty($vouchers->detail) && !empty($vouchers->exp_date) && $vouchers->save()){
             return [
                 'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
+                'data' => "Voucher was saved with id: {$vouchers->id}",
+                'id' => $vouchers->id
             ];
         } else {
             return [
@@ -69,30 +69,30 @@ class PromotionsController extends Controller
      */
     public function show($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion))
+        $vouchers = \App\Voucher::find($id);
+        if (!is_null($vouchers))
             return [
                 'success' => true,
-                'data' => $promotion
+                'data' => $vouchers
             ];
         return [
             'success' => false,
-            'data' => 'Promotion not found'
+            'data' => 'Voucher not found'
         ];
     }
 
-    public function discount($id)
+    public function owned_vouchers($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion)) {
+        $vouchers = \App\Voucher::find($id);
+        if (!is_null($vouchers)) {
             return [
                 'success' => true,
-                'data' => $promotion->discount()->get()
+                'data' => $vouchers->owned_vouchers()->get()
             ];
         } else {
             return [
                 'success' => false,
-                'data' => 'Promotion not found'
+                'data' => 'Voucher not found'
             ];
         }
     }

@@ -15,38 +15,43 @@ class DatabaseSeeder extends Seeder
         App\User::create([
           'name' => 'nathaporn',
           'email' => 'nathaporn.w@ku.th',
-          'password' => '$2y$10$QnZul.swNG8x5yWNL66o/.MJ6JDhdM4Cyn51FQSnM3ql53A76wdD2'
+          'password' => '$2y$10$QnZul.swNG8x5yWNL66o/.MJ6JDhdM4Cyn51FQSnM3ql53A76wdD2',
+          'point' => 220
         ]);
         App\Promotion::create([
-          'name' => 'Ubernight',
-          'detail' => 'type code "UBERNIGHT" during 6 p.m. - 5 a.m. to get 50 Baht discount',
-          'start_date' => '2017-05-10',
-          'exp_date' => '2017-05-24'
+          'name' => 'Chinese New Year',
+          'detail' => 'type code "CHINA" to get 50 Baht discount. This code can use unlimited times until 28 Feb. 2017',
+          'start_date' => '2017-02-01',
+          'exp_date' => '2017-02-28',
+          'image_path' => '{path}'
         ]);
         App\Promotion::create([
           'name' => 'Happy Halloween',
           'detail' => 'type code "HALLOWEEN" to get 50 Baht discount. This code can use up to 3 times.',
           'start_date' => '2017-08-27',
-          'exp_date' => '2017-09-03'
+          'exp_date' => '2017-09-03',
+          'image_path' => '{path}'
         ]);
         App\Voucher::create([
-          'code' => 'axt4qjhb17de',
+          'point' => 200,
           'detail' => 'Tesco discount 200 Baht',
           'exp_date' => '2017-12-31',
-          'limit_number_of_use' => 1
+          'limit_number_of_use' => 1,
+          'image_path' => '{path}'
         ]);
         App\Voucher::create([
-          'code' => 'etfg12sdf5dd',
+          'point' => 350,
           'detail' => 'Major Cineples discount 100 Baht when purchase 2 tickets',
           'exp_date' => '2017-07-31',
-          'limit_number_of_use' => 1
+          'limit_number_of_use' => 1,
+          'image_path' => '{path}'
         ]);
 
-        $promotion = App\Promotion::where('name', '=', 'Ubernight')->first();
+        $promotion = App\Promotion::where('name', '=', 'Chinese New Year')->first();
         if (!is_null($promotion)) {
           $promotion->discount()->save(
             new App\Discount([
-              'code' => 'UBERNIGHT',
+              'code' => 'CHINA',
               'amount' => 50,
               'limit_number_of_use' => 0
             ])
@@ -65,18 +70,30 @@ class DatabaseSeeder extends Seeder
         }
 
         $user = App\User::first();
-        $voucher1 = App\Voucher::where('code', '=', 'axt4qjhb17de')->first();
-        $voucher2 = App\Voucher::where('code', '=', 'etfg12sdf5dd')->first();
+        $voucher1 = App\Voucher::find(1);
+        $voucher2 = App\Voucher::find(2);
         if (!is_null($user)) {
           App\Owned_voucher::create([
             'user_id' => $user->id,
-            'voucher_id' => $voucher1->id
+            'voucher_id' => $voucher1->id,
+            'code' => 'axt4qjhb17de'
           ]);
           App\Owned_voucher::create([
             'user_id' => $user->id,
-            'voucher_id' => $voucher2->id
+            'voucher_id' => $voucher1->id,
+            'code' => 'mgdt7k6lbskt'
+          ]);
+          App\Owned_voucher::create([
+            'user_id' => $user->id,
+            'voucher_id' => $voucher2->id,
+            'code' => 'etfg12sdf5dd'
           ]);
         }
+
+      App\Redeemed_voucher::create([
+        'owned_voucher_id' => 1,
+        'redeem_date' => '2017-05-01'
+      ]);
 
 
 

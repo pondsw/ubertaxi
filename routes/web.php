@@ -19,9 +19,10 @@ Route::get('promotion', function () {
     return view('promotion');
 });
 
-Route::get('voucher', function () {
-    return view('voucher');
-});
+// Route::get('vouchers', function () {
+//     return view('vouchers');
+// });
+Route::get('vouchers', 'VouchersController@index');
 
 
 
