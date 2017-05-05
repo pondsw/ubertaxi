@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Owned_voucher extends Model
 {
+
+    protected $fillable = ['user_id','voucher_id','code'];
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -17,6 +20,6 @@ class Owned_voucher extends Model
     }
 
     public function redeemed_voucher(){
-        return $this->hasMany('App\Redeemed_voucher');
+        return $this->hasOne('App\Redeemed_voucher');
     }
 }

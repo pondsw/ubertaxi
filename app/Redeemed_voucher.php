@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Redeemed_voucher extends Model
 {
-    protected $fillable = ['redeem_date'];
+    protected $fillable = ['owned_voucher_id','redeem_date'];
 
     public function owned_voucher()
     {
