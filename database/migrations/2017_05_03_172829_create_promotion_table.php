@@ -19,6 +19,7 @@ class CreatePromotionTable extends Migration
           $table->string('detail');
           $table->date('start_date');
           $table->date('exp_date');
+          $table->string('image_path');
           $table->timestamps();
           $table->softDeletes();
       });
