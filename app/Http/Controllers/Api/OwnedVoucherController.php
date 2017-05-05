@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class OwnedVoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = \App\User::all();
-        return [
-            'success' => true,
-            'data' => $users
-        ];
+
     }
 
     /**
@@ -39,7 +35,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $voucher = new \App\Owned_voucher;
+      $voucher->voucher_id = $request->voucher_id;
+      $voucher->user_id = $request->user_id;
+
+      if ($voucher->save()){
+          return [
+              'success' => true,
+              'data' => "Owned voucher was saved with id: {$vouchers->id}",
+              'id' => $vouchers->id
+          ];
+      } else {
+          return [
+              'success' => false,
+              'data' => "Some error occurred"
+          ];
+      }
     }
 
     /**
@@ -50,65 +61,18 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = \App\User::find($id);
-        if (!is_null($user))
+        $voucher = \App\Owned_voucher::find($id);
+        if (!is_null($voucher))
             return [
                 'success' => true,
-                'data' => $user
+                'data' => $voucher
             ];
         return [
             'success' => false,
-            'data' => 'User not found'
+            'data' => 'Owned voucher not found'
         ];
     }
 
-    public function owned_vouchers($id)
-    {
-        $user = \App\User::find($id);
-        if (!is_null($user)) {
-            return [
-                'success' => true,
-                'data' => $user->owned_vouchers()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'User not found'
-            ];
-        }
-    }
-
-    public function redeemed_discounts($id)
-    {
-        $user = \App\User::find($id);
-        if (!is_null($user)) {
-            return [
-                'success' => true,
-                'data' => $user->redeemed_discounts()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'User not found'
-            ];
-        }
-    }
-
-    public function redeemed_vouchers($id)
-    {
-        $user = \App\User::find($id);
-        if (!is_null($user)) {
-            return [
-                'success' => true,
-                'data' => $user->redeemed_vouchers()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'User not found'
-            ];
-        }
-    }
 
     /**
      * Show the form for editing the specified resource.

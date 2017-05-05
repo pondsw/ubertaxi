@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SingersController extends Controller
+class RedeemedVoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class SingersController extends Controller
      */
     public function index()
     {
-        $singers = \App\Singer::all();
-        return [
-            'success' => true,
-            'data' => $singers
-        ];
+
     }
 
     /**
@@ -39,21 +35,22 @@ class SingersController extends Controller
      */
     public function store(Request $request)
     {
-        $singer = new \App\Singer;
-        $singer->name = trim($request->name);
-        if (!empty($singer->name) && $singer->save()){
-            return [
-                'success' => true,
-                'data' => "Singer '{$singer->name}' was saved with id: {$singer->id}",
-                'id' => $singer->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
+      $voucher = new \App\Redeemed_voucher;
+      $voucher->owned_voucher_id = $request->owned_voucher_id;
+      $voucher->redeem_date = date("Y-m-d");
 
+      if ($voucher->save()){
+          return [
+              'success' => true,
+              'data' => "Redeemed voucher was saved with id: {$vouchers->id}",
+              'id' => $vouchers->id
+          ];
+      } else {
+          return [
+              'success' => false,
+              'data' => "Some error occurred"
+          ];
+      }
     }
 
     /**
@@ -64,36 +61,18 @@ class SingersController extends Controller
      */
     public function show($id)
     {
-        $singer = \App\Singer::find($id);
-        if (!is_null($singer))
+        $voucher = \App\Redeemed_voucher::find($id);
+        if (!is_null($voucher))
             return [
                 'success' => true,
-                'data' => $singer
+                'data' => $voucher
             ];
         return [
             'success' => false,
-            'data' => 'Singer not found'
+            'data' => 'Redeemed voucher not found'
         ];
     }
 
-    public function albums($id)
-    {
-        $singer = \App\Singer::find($id);
-        if (!is_null($singer)) {
-            return [
-                'success' => true,
-                'data' => [
-                    'count' => $singer->albums()->count(),
-                    'albums' => $singer->albums()->get()
-                ]
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'Singer not found'
-            ];
-        }
-    }
 
     /**
      * Show the form for editing the specified resource.
