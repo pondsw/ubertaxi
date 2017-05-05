@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VouchersController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class VouchersController extends Controller
      */
     public function index()
     {
-        $vouchers = \App\Voucher::all();
+        $users = \App\User::all();
         return [
             'success' => true,
-            'data' => $vouchers
+            'data' => $users
         ];
     }
 
@@ -39,25 +39,7 @@ class VouchersController extends Controller
      */
     public function store(Request $request)
     {
-        $vouchers = new \App\Voucher;
-        $vouchers->code = trim($request->code);
-        $vouchers->detail = trim($request->detail);
-        $vouchers->exp_date = $request->exp_date;
-        $vouchers->limit_number_of_use = $request->limit_number_of_use;
-
-        if (!empty($vouchers->code) && !empty($vouchers->detail) && !empty($vouchers->exp_date) && $vouchers->save()){
-            return [
-                'success' => true,
-                'data' => "Voucher was saved with id: {$vouchers->id}",
-                'id' => $vouchers->id
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => "Some error occurred"
-            ];
-        }
-
+        //
     }
 
     /**
@@ -68,30 +50,30 @@ class VouchersController extends Controller
      */
     public function show($id)
     {
-        $vouchers = \App\Voucher::find($id);
-        if (!is_null($vouchers))
+        $user = \App\User::find($id);
+        if (!is_null($user))
             return [
                 'success' => true,
-                'data' => $vouchers
+                'data' => $user
             ];
         return [
             'success' => false,
-            'data' => 'Voucher not found'
+            'data' => 'User not found'
         ];
     }
 
     public function owned_vouchers($id)
     {
-        $vouchers = \App\Voucher::find($id);
-        if (!is_null($vouchers)) {
+        $user = \App\User::find($id);
+        if (!is_null($user)) {
             return [
                 'success' => true,
-                'data' => $vouchers->owned_vouchers()->get()
+                'data' => $user->owned_vouchers()->get()
             ];
         } else {
             return [
                 'success' => false,
-                'data' => 'Voucher not found'
+                'data' => 'User not found'
             ];
         }
     }
