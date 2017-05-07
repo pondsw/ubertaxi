@@ -34,7 +34,7 @@
             <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataVoucher">
             <!-- <div class="col-md-3 col-sm-6 hero-feature"> -->
                 <div class="thumbnail">
-                    <img :src="'http://ubertaxi.dev/storage/vouchers/' + d.id +'.jpg'"  height="200" >
+                    <img :src="'http://ubertaxi.dev/img/vouchers/' + d.id +'.jpg'"  height="200" >
                     <div class="caption">
                         <h3>Feature Label</h3>
                         <p>@{{ checkDetail(d.detail) }}</p>

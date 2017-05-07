@@ -42,13 +42,13 @@
                              <li><a> You have {{ Auth::user()->point }} </span>  points </a></li>
                            </li>
                            <li>
-                             <li><a href="{{ url('/profile') }}"><img src="/storage/user-16.ico" > &nbsp; Profile</a></li>
+                             <li><a href="{{ url('/profile') }}"><img src="img/user-16.ico" > &nbsp; Profile</a></li>
                            </li>
                              <li>
                                  <a href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                    <img src="/storage/logout-16.ico" >
+                                    <img src="img/logout-16.ico" >
                                      &nbsp;Logout
                                  </a>
 
