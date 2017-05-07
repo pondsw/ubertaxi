@@ -27,16 +27,7 @@
                     </li>
                 </ul>
           <ul class="nav navbar-nav navbar-right top-right">
-              <!-- @if (Route::has('login'))
-                @if (Auth::check())
-                 <li class="navbar-text">
-                     Login as
-                 </li>
-                 @else
-                 <li><a href="{{ url('/login') }}">Login</a></li>
-                 <li><a href="{{ url('/register') }}">Register</a></li>
-                 @endif
-                 @endif -->
+
                  @if (Auth::guest())
                      <li><a href="{{ route('login') }}">Login</a></li>
                      <li><a href="{{ route('register') }}">Register</a></li>
@@ -48,13 +39,17 @@
 
                          <ul class="dropdown-menu" role="menu">
                            <li>
-                             <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                             <li><a> You have {{ Auth::user()->point }} </span>  points </a></li>
+                           </li>
+                           <li>
+                             <li><a href="{{ url('/profile') }}"><img src="/storage/user-16.ico" > &nbsp; Profile</a></li>
                            </li>
                              <li>
                                  <a href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                     Logout
+                                    <img src="/storage/logout-16.ico" >
+                                     &nbsp;Logout
                                  </a>
 
                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
