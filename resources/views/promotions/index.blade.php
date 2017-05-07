@@ -26,11 +26,11 @@
 
 
 
-        <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="col-md-3 col-sm-6 hero-feature" >
             <div class="thumbnail">
-                <img src="http://gazettereview.com/wp-content/uploads/2017/04/Uber-4.jpg" alt="">
+                <img src="http://www.123newyear.com/wp-content/uploads/2015/04/chinese-new-year-card.jpg" alt="">
                 </br>
-                <p>โปรโมชันนั่งฟรี 1 ครั้ง </p>
+                <p>Chinese New Year Promotion </p>
                 </br>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getCode">Get Now!</button>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#getInfo">More Info</button>
@@ -42,9 +42,9 @@
                         <h4 class="modal-title">Information</h4>
                       </div>
                       <div class="modal-body">
-                        <p>โปรโมชันนั่งฟรี 1 ครั้ง สำหรับผู้ใช้บริการครั้งแรกหรือผู้ที่ใช้บริการอยู่แล้ว</p>
+                        <p>type code "CHINA" to get 50 Baht discount. This code can use unlimited times until 28 Feb. 2017</p>
                       </br>
-                        <p> ใช้ได้เพียง 1 ครั้ง เท่านั้น </p>
+                        <p> 2017-02-01 - 2017-02-28 </p>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -60,7 +60,7 @@
                         <h4 class="modal-title">Code</h4>
                       </div>
                       <div class="modal-body">
-                        <p>z6FWQM4IhB</p>
+                        <p>CHINA</p>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -73,9 +73,9 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="http://gazettereview.com/wp-content/uploads/2017/02/Uber-2.jpg" alt="">
+                <img src="http://krui.fm/wordpress/wp-content/uploads/2016/10/halloween.jpg" alt="">
                 </br>
-                <p>ส่วนลดค่าโดยสาร 300 บาท </p>
+                <p>Halloween Promotion </p>
                 </br>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getCode2">Get Now!</button>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#getInfo2">More Info</button>
@@ -87,11 +87,10 @@
                         <h4 class="modal-title">Information</h4>
                       </div>
                       <div class="modal-body">
-                        <p>โปรโมชันแจกส่วนลดค่าเดินทาง 300 บาท
-                          เพียงแค่กรอกรหัสผ่านทางแอพพลิเคชัน
+                        <p>type code "HALLOWEEN" to get 50 Baht discount. This code can use up to 3 times.
                         </p>
                         </br>
-                        <p> ใช้ได้ตั้งแต่วันที่ 1-7 พฤษภาคม พ.ศ. 2560 </p>
+                        <p> 2017-08-27 - 2017-09-03</p>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -107,7 +106,7 @@
                         <h4 class="modal-title">Code</h4>
                       </div>
                       <div class="modal-body">
-                        <p>Ptp8grIS23</p>
+                        <p>HALLOWEEN</p>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -118,7 +117,7 @@
               </div>
             </div>
 
-        <div class="col-md-3 col-sm-6 hero-feature">
+        <!-- <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
                 <img src="http://zdnet3.cbsistatic.com/hub/i/2017/01/23/b0d806af-9a2d-4963-a5e4-47157f186174/2402da623ccd21108b7d02551a9b9a7f/uber.jpg" alt="">
 
@@ -209,7 +208,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
     </div>
     <!-- /.row -->
