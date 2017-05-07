@@ -1,10 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-<!-- <h1>Add Singer</h1>
+<h1>Add Vouchers</h1>
 <div class="" id="vue-add-singer">
     <div class="form-group">
-        <label for="name">Singer Name</label>
+        <label for="name">Title</label>
+        <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
+    </div>
+    <div class="form-group">
+        <label for="name">Detail</label>
+        <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Expiration Date</label>
         <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
     </div>
 
@@ -34,5 +43,5 @@ var vm = new Vue({
         }
     }
 });
-</script> -->
+</script>
 @endsection

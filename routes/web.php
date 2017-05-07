@@ -23,7 +23,9 @@ Route::get('/', function () {
 //     return view('vouchers');
 // });
 Route::get('vouchers', 'VouchersController@index');
+Route::get('vouchers/create', 'VouchersController@create');
 Route::get('promotions', 'PromotionsController@index');
+Route::get('promotions/create', 'PromotionsController@create');
 
 
 
