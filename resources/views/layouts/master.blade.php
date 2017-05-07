@@ -6,12 +6,16 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        @include('layouts._navbar')
-        <div class="container">
-            @yield('content')
-            <hr>
-            @include('layouts._footer')
+        <div id ="app">
+
+          @include('layouts._navbar')
+          <div class="container" style="margin-top:77px">
+              @yield('content')
+              <hr>
+              @include('layouts._footer')
+          </div>
         </div>
+
 
 
         <script src="/js/app.js" charset="utf-8"></script>
