@@ -15,14 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('promotion', function () {
-    return view('promotion');
-});
+// Route::get('promotion', function () {
+//     return view('promotion');
+// });
 
 // Route::get('vouchers', function () {
 //     return view('vouchers');
 // });
 Route::get('vouchers', 'VouchersController@index');
+Route::get('promotions', 'PromotionsController@index');
 
 
 

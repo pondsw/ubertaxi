@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ url('promotion') }}">Promotion</a>
+                        <a href="{{ url('promotions') }}">Promotion</a>
                     </li>
                     <li>
                         <a href="{{ url('vouchers') }}">Voucher</a>
