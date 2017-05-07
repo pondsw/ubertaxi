@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top"  role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -47,6 +47,9 @@
                          </a>
 
                          <ul class="dropdown-menu" role="menu">
+                           <li>
+                             <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                           </li>
                              <li>
                                  <a href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
