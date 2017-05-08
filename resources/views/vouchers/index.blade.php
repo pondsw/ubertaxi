@@ -32,7 +32,7 @@
 
 
             <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataVoucher">
-            <!-- <div class="col-md-3 col-sm-6 hero-feature"> -->
+
                 <div class="thumbnail">
                     <img :src="'img/vouchers/' + d.id +'.jpg'"  height="200" >
                     <div class="caption">
@@ -67,8 +67,6 @@
               </div>
               <div class="modal-body">
 
-                <!-- <p>@{{ detail }}</p>
-                <p>@{{ exp_date }}</p> -->
                 <img :src="'img/vouchers/' + id +'.jpg'"  height="200" >
                 <div class="row">
                   <div class="col-sm-3">Detail</div>
