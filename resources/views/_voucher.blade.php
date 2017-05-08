@@ -27,7 +27,7 @@
               <!-- <div class="panel-heading"></div> -->
 
               <div class="panel-body">
-                  You have 2 point.
+                  <h2>You have {{ $user->point }} point </h2>
               </div>
           </div>
         </div>
