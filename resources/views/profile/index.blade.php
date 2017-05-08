@@ -27,9 +27,24 @@
 
         </div>
 
-        {{ $user->owned_vouchers }}
+        <div>
 
-        {{ $user->redeemed_vouchers }}
+        <div>
+          @foreach($owned_vouchers as $value)
+            {{ $value->voucher_id }}
+            {{ $value->code }}
+            {{ $value->voucher->detail }}
+          @endforeach
+        </div>
+
+        <div>
+          @foreach($redeemed_vouchers as $value)
+            {{ $value->voucher_id }}
+            {{ $value->code }}
+            {{ $value->voucher->detail }}
+            {{ $value->redeem_date }}
+          @endforeach
+        </div>
 
     </div>
 </div>
