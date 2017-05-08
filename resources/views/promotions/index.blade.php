@@ -33,9 +33,12 @@
                     <h3>@{{ checkDetail(d.name) }}</h3>
                   </br>
                     <p>
-
-                        <a href="#" class="btn btn-primary" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#getCode">Get Now!</a>
+                      <!-- @if (Auth::user())
+                     <a href="#" class="btn btn-primary" v-on:click="getnow($event, {{ Auth::user()->id }})">Get Now!</a>
+                     @endif -->
+                        <!-- <a href="#" class="btn btn-primary" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#getCode">Get Now!</a> -->
                         <a href="#" class="btn btn-default" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#myModal">More Info</a>
+
 
                     </p>
                 </div>
@@ -43,6 +46,7 @@
 
             </div>
         </div>
+
 
     </div>
     <!-- /.row -->
@@ -62,15 +66,17 @@
 
             <!-- <p>@{{ detail }}</p>
             <p>@{{ exp_date }}</p> -->
-            <img :src="'http://ubertaxi.dev/storage/promotions/' + id +'.jpg'"  height="200" >
+            <img :src="'img/promotions/' + id +'.jpg'"  height="200" >
+          </br>
             <div class="row">
+              </br>
               <div class="col-sm-3">Detail</div>
               <div class="col-sm-9">@{{ detail }}</div>
             </div>
-            <div class="row" >
+            <!-- <div class="row" >
               <div class="col-sm-3">Code </div>
               <div class="col-sm-9">@{{ code }}</div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-sm-3">Start Date </div>
               <div class="col-sm-9">@{{ start_date }}</div>
@@ -150,7 +156,7 @@ var vm = new Vue({
         // `event` is the native DOM event
         if (event) {
           promotion = this.dataPromotion[event.target.id - 1];
-          
+
           // alert(event.target.id);
           this.id = promotion.id;
           this.detail = promotion.detail;
@@ -160,6 +166,23 @@ var vm = new Vue({
         }
 
       }
+    //
+    //   getnow: function (event , id){
+    //     axios.post('/api/discounts', {
+    //         promotion_id: this.id,
+    //         user_id: id,
+    //         code: this.code
+    //     }).then(function (response) {
+    //         console.log(response.data.data);
+    //         alert(response.data.data);
+    //         vm.code = '';
+    //     }).catch(function (error) {
+    //         alert('Error (see console log)');
+    //         console.log(error);
+    //     });
+    //
+    //
+    // }
     }
 });
 </script>
