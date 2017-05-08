@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>๊Uber</title>
+        <title>Uber</title>
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
