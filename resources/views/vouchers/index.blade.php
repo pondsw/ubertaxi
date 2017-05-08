@@ -34,7 +34,7 @@
             <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataVoucher">
             <!-- <div class="col-md-3 col-sm-6 hero-feature"> -->
                 <div class="thumbnail">
-                    <img :src="'http://ubertaxi.dev/img/vouchers/' + d.id +'.jpg'"  height="200" >
+                    <img :src="'/img/vouchers/' + d.id +'.jpg'"  height="200" >
                     <div class="caption">
                         <h3>Feature Label</h3>
                         <p>@{{ checkDetail(d.detail) }}</p>
@@ -65,14 +65,18 @@
 
                 <!-- <p>@{{ detail }}</p>
                 <p>@{{ exp_date }}</p> -->
-                <img :src="'http://ubertaxi.dev/storage/vouchers/' + id +'.jpg'"  height="200" >
+                <img :src="'/img/vouchers/' + id +'.jpg'"  height="200" >
                 <div class="row">
                   <div class="col-sm-3">Detail</div>
-                  <div class="col-sm-9">@{{ detail }}</div>
+                  <div class="col-sm-9">: @{{ detail }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">Point  </div>
+                  <div class="col-sm-9">: @{{ point }}</div>
                 </div>
                 <div class="row">
                   <div class="col-sm-3">Expiration Date </div>
-                  <div class="col-sm-9">@{{ exp_date }}</div>
+                  <div class="col-sm-9">: @{{ exp_date }}</div>
                 </div>
 
               </div>
@@ -109,7 +113,9 @@
           showModal : false,
           detail : "",
           exp_date :"",
-          id : 1
+          id : 1,
+          title : "",
+          point : 1
         },
         methods:{
           checkDetail: function(contend) {
@@ -131,7 +137,7 @@
               this.id = voucher.id;
               this.detail = voucher.detail;
               this.exp_date = voucher.exp_date;
-
+              this.point = voucher.point;
             }
 
           }
