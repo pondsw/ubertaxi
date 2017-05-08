@@ -3,6 +3,7 @@
 @section('content')
 <h1>Add Vouchers</h1>
 <div class="" id="vue-add-voucher">
+  <form id="add">
 
     <div class="form-group">
         <label for="point">Point</label>
@@ -31,7 +32,8 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 
-    <button class="btn btn-primary" v-on:click="submit">Submit</button>
+    <button class="btn btn-primary" v-on:click="add.submit()">Submit</button>
+  </form>
 </div>
 @endsection
 
@@ -47,13 +49,13 @@ var vm = new Vue({
         'image_path': ''
     },
     methods: {
-        submit: function (event) {
+        submit: function () {
           axios.post('http://ubertaxi.dev/api/vouchers', {
             point: this.point,
             detail: this.detail,
             exp_date: this.exp_date,
-            limit_number_of_use: limit_number_of_use,
-            image_path: this .image_path
+            limit_number_of_use: this.limit_number_of_use,
+            image_path: this.image_path
           }).then(function (response) {
               console.log(response.data.data);
               alert(response.data.data);
