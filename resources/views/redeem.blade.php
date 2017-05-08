@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container" id='vue-app-promotions'>
+<div class="container" id='vue-app-redeem'>
 
 
     <!-- Jumbotron Header -->
@@ -51,7 +51,7 @@
 <script>
     var code = $('input[name="id"]').val();
     var vm = new Vue({
-        el: '#vue-app-vouchers',
+        el: '#vue-app-redeem',
 
         data:{
           dataVoucher : data.data,
