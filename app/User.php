@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Redeemed_discount');
     }
 
+    public function redeemed_voucher()
+    {
+        return $this->hasMany('App\Redeemed_voucher');
+    }
+
     public function isAdmin(){
       if( $this->type == 'admin'){
         return true;

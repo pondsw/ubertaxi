@@ -29,7 +29,7 @@
 
         {{ $user->owned_vouchers }}
 
-
+        {{ $redeemed_vouchers }}
 
 
 
