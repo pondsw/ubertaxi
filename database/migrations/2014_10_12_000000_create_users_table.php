@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar')->default('default.jpg');
             $table->string('password');
             $table->integer('point')->default($value);
             $table->string('type')->default('user');
