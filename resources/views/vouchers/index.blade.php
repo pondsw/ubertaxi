@@ -40,7 +40,8 @@
                         <p>@{{ checkDetail(d.detail) }}</p>
                         <p>
 
-                            <a href="#" class="btn btn-primary">Get Now!</a> <a href="#" class="btn btn-default" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#myModal">More Info</a>
+                            <a href="#" class="btn btn-primary" v-on:click="getnow">Get Now!</a>
+                            <a href="#" class="btn btn-default" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#myModal">More Info</a>
 
                         </p>
                     </div>
@@ -139,6 +140,19 @@
               this.exp_date = voucher.exp_date;
               this.point = voucher.point;
             }
+            },
+            
+            getnow: function (event){
+              axios.post('http://wongklom.dev/api/singers', {
+                  name: this.name
+              }).then(function (response) {
+                  console.log(response.data.data);
+                  alert(response.data.data);
+                  vm.name = '';
+              }).catch(function (error) {
+                  alert('Error (see console log)');
+                  console.log(error);
+              });
 
           }
         }
