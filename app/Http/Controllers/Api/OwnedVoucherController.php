@@ -43,8 +43,8 @@ class OwnedVoucherController extends Controller
       if ($voucher->save()){
           return [
               'success' => true,
-              'data' => "Owned voucher was saved with id: {$vouchers->id}",
-              'id' => $vouchers->id
+              'data' => "Owned voucher was saved with id: $voucher->id",
+              'id' => $voucher->id
           ];
       } else {
           return [
