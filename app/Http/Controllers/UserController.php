@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function profile(){
         $user = Auth::user();
-        return view('profile.index', ['user' => $user);
+        return view('profile.index', ['user' => $user]);
     }
 
     public function update_avatar(Request $request){

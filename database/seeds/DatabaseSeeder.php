@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
           'password' => '$2y$10$QnZul.swNG8x5yWNL66o/.MJ6JDhdM4Cyn51FQSnM3ql53A76wdD2',
           'type' => 'user',
           'point' => 220,
-          'avatar' => '1494242226.jpg'
+          'avatar' => '1494249683.jpg'
         ]);
         App\User::create([
           'name' => 'Sitthdiech Phongsamsaun',
@@ -107,7 +107,8 @@ class DatabaseSeeder extends Seeder
         }
 
       App\Redeemed_voucher::create([
-        'owned_voucher_id' => 1,
+        'user_id' => 1,
+        'voucher_id' => 1,
         'redeem_date' => '2017-05-01'
       ]);
 

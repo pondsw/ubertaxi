@@ -29,9 +29,7 @@
 
         {{ $user->owned_vouchers }}
 
-        {{ $redeemed_vouchers }}
-
-
+        {{ $user->redeemed_vouchers }}
 
     </div>
 </div>

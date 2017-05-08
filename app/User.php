@@ -37,7 +37,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Redeemed_discount');
     }
 
-    public function redeemed_voucher()
+    public function redeemed_vouchers()
     {
         return $this->hasMany('App\Redeemed_voucher');
     }
