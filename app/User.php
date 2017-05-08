@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','type', 'point',
+        'name', 'email', 'password','type', 'point','avatar'
     ];
 
     /**
@@ -35,11 +35,6 @@ class User extends Authenticatable
     public function redeemed_discounts()
     {
         return $this->hasMany('App\Redeemed_discount');
-    }
-
-    public function redeemed_vouchers()
-    {
-        return $this->hasMany('App\Redeemed_voucher');
     }
 
     public function isAdmin(){
