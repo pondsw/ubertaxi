@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $value = 0;
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_general_ci';
+        Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->integer('point')->default($value);
-            $table->string('type');
-            $table->rememberToken();
+            $table->integer('singer_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('singer_id')
+                  ->references('id')
+                  ->on('singers');
         });
     }
 
@@ -36,7 +34,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('albums');
         Schema::enableForeignKeyConstraints();
     }
 }
