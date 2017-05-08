@@ -141,7 +141,6 @@
             },
 
             getnow: function (event , id){
-              alert(id);
               axios.post('/api/owned_vouchers', {
                   voucher_id: this.id,
                   user_id: id,
