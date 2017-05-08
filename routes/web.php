@@ -31,6 +31,10 @@ Route::get('promotions/create', 'PromotionsController@create');
 
 // $ composer require guzzlehttp/guzzle:~6.0
 
+Route::get('singers', 'SingersController@index');
+Route::get('singers/create', 'SingersController@create');
+Route::get('singers/{id}', 'SingersController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -40,4 +44,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/profile','UserController@profile');
-Route::post('/profile','UserController@update_avatar');
