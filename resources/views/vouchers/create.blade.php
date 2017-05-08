@@ -48,8 +48,25 @@ var vm = new Vue({
     },
     methods: {
         submit: function (event) {
-          alert('HALO');
-
+          axios.post('http://ubertaxi.dev/api/vouchers', {
+            point: this.point,
+            detail: this.detail,
+            exp_date: this.exp_date,
+            limit_number_of_use: limit_number_of_use,
+            image_path: this .image_path
+          }).then(function (response) {
+              console.log(response.data.data);
+              alert(response.data.data);
+              vm.point = '';
+              vm.detail = '';
+              vm.exp_date = '';
+              vm.limit_number_of_use = '';
+              vm.image_path = '';
+          }).catch(function (error) {
+              alert('Error (see console log)');
+              console.log(error);
+          });
+          alert('Add voucher complate');
         }
     }
 
