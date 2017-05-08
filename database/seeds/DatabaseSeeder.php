@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
           'email' => 'nathaporn.w@ku.th',
           'password' => '$2y$10$QnZul.swNG8x5yWNL66o/.MJ6JDhdM4Cyn51FQSnM3ql53A76wdD2',
           'type' => 'user',
-          'point' => 220
+          'point' => 220,
+          'avatar' => '1494242226.jpg'
         ]);
         App\User::create([
           'name' => 'Sitthdiech Phongsamsaun',
