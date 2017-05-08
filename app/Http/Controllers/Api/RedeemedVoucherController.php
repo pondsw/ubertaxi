@@ -36,16 +36,16 @@ class RedeemedVoucherController extends Controller
      */
     public function store(Request $request)
     {
-      echo $request->code;
+      // echo $request->code;
       $ownedVoucher = \App\Owned_voucher::where('code', $request->code)->first();
 
-      echo $ownedVoucher;
+      // echo $ownedVoucher;
       $voucher = \App\Voucher::find($ownedVoucher->voucher_id);
       $date1 = new DateTime();
       $date2 = new DateTime($voucher->exp_date);
       // echo $date1;
-      echo $voucher->exp_date;
-      echo var_dump($date1 < $date2);
+      // echo $voucher->exp_date;
+      // echo var_dump($date1 < $date2);
       if($date1 > $date2){
         return [
             'success' => false,
