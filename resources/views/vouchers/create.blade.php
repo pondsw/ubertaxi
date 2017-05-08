@@ -17,6 +17,16 @@
         <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
     </div>
 
+<<<<<<< Updated upstream
+=======
+    <div class="form-group">
+      <label for="name">Vouchers photo</label>
+      <input type="file" name="vouchers_img"  id="image_path" >
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    </div>
+
+
+>>>>>>> Stashed changes
     <button class="btn btn-primary" v-on:click="submit()">Submit</button>
 </div>
 @endsection
@@ -42,6 +52,8 @@ var vm = new Vue({
             });
         }
     }
+
+
 });
 </script>
 @endsection
