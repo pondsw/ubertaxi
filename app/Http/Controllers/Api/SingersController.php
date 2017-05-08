@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PromotionsController extends Controller
+class SingersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,10 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        $promotions = \App\Promotion::all();
-        // $discounts = \App\Discount::all();
+        $singers = \App\Singer::all();
         return [
             'success' => true,
-            'data' => $promotions
-            // 'code' => $discounts
+            'data' => $singers
         ];
     }
 
@@ -41,18 +39,13 @@ class PromotionsController extends Controller
      */
     public function store(Request $request)
     {
-        $promotion = new \App\Promotion;
-        $promotion->name = trim($request->name);
-        $promotion->detail = trim($request->detail);
-        $promotion->start_date = $request->start_date;
-        $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
-
-        if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
+        $singer = new \App\Singer;
+        $singer->name = trim($request->name);
+        if (!empty($singer->name) && $singer->save()){
             return [
                 'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
+                'data' => "Singer '{$singer->name}' was saved with id: {$singer->id}",
+                'id' => $singer->id
             ];
         } else {
             return [
@@ -71,33 +64,33 @@ class PromotionsController extends Controller
      */
     public function show($id)
     {
-        $promotion = \App\Promotion::find($id);
-        if (!is_null($promotion))
+        $singer = \App\Singer::find($id);
+        if (!is_null($singer))
             return [
                 'success' => true,
-                'data' => $promotion
+                'data' => $singer
             ];
         return [
             'success' => false,
-            'data' => 'Promotion not found'
+            'data' => 'Singer not found'
         ];
     }
 
-    public function discount($id)
+    public function albums($id)
     {
-        $promotion = \App\Promotion::find($id);
-        // $discount = \App\Discount::find($id);
-        if (!is_null($promotion)) {
+        $singer = \App\Singer::find($id);
+        if (!is_null($singer)) {
             return [
                 'success' => true,
-                'data' => $promotion->discount()->get()
-                // 'code' => $discount->discount()->get()
+                'data' => [
+                    'count' => $singer->albums()->count(),
+                    'albums' => $singer->albums()->get()
+                ]
             ];
         } else {
             return [
                 'success' => false,
-                'data' => 'Promotion not found'
-                // 'code' => 'Code not found'
+                'data' => 'Singer not found'
             ];
         }
     }
