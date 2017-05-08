@@ -25,9 +25,7 @@ class CreateRedeemTable extends Migration
           $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-          $table->foreign('code')
-                ->references('code')
-                ->on('owned_vouchers');
+
           $table->foreign('voucher_id')
                 ->references('id')
                 ->on('vouchers');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
 
 class RedeemedVoucherController extends Controller
 {
@@ -35,15 +36,38 @@ class RedeemedVoucherController extends Controller
      */
     public function store(Request $request)
     {
-      $voucher = new \App\Redeemed_voucher;
-      $voucher->owned_voucher_id = $request->owned_voucher_id;
-      $voucher->redeem_date = date("Y-m-d");
+      echo $request->code;
+      $ownedVoucher = \App\Owned_voucher::where('code', $request->code)->first();
 
-      if ($voucher->save()){
+      echo $ownedVoucher;
+      $voucher = \App\Voucher::find($ownedVoucher->voucher_id);
+      $date1 = new DateTime();
+      $date2 = new DateTime($voucher->exp_date);
+      // echo $date1;
+      echo $voucher->exp_date;
+      echo var_dump($date1 < $date2);
+      if($date1 > $date2){
+        return [
+            'success' => false,
+            'data' => "Voucher has expired"
+        ];
+      }
+
+
+      $redemmVoucher = new \App\Redeemed_voucher;
+      $redemmVoucher->voucher_id = $voucher->id;
+      $redemmVoucher->redeem_date = $date1->format('Y-m-d');
+      $redemmVoucher->code = $request->code;
+      $redemmVoucher->user_id = $ownedVoucher->user_id;
+
+
+
+
+      if ($redemmVoucher->save() && $ownedVoucher->delete()){
           return [
               'success' => true,
-              'data' => "Redeemed voucher was saved with id: {$vouchers->id}",
-              'id' => $vouchers->id
+              'data' => "Redeemed voucher was saved with id: {$redemmVoucher->id}",
+              'id' => $redemmVoucher->id
           ];
       } else {
           return [

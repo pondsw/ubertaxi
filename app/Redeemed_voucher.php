@@ -13,10 +13,6 @@ class Redeemed_voucher extends Model
       return $this->belongsTo('App\User');
     }
 
-    public function owned_voucher()
-    {
-      return $this->belongsTo('App\Owned_voucher');
-    }
 
     public function voucher()
     {
