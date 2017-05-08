@@ -11,16 +11,7 @@ class UserController extends Controller
     //
 
     public function profile(){
-        $user = Auth::user();
-        $redeemed = [];
-        foreach ($user->owned_vouchers() as $voucher) {
-           $redeemed_voucher = App\Redeemed_voucher::where('owned_voucher_id', '=' ,$voucher->id);
-           if(!is_null($redeemed_voucher)){
-             array_push($redeemed, $redeemed_voucher);
-           }
-          array_push($redeemed, $voucher);
-        }
-        return view('profile.index', ['user' => $user]);
+      return view('profile.index',array('user' => Auth::user()));
     }
 
     public function update_avatar(Request $request){
@@ -33,16 +24,7 @@ class UserController extends Controller
         		$user->avatar = $filename;
         		$user->save();
         	}
-          $user = Auth::user();
-          $redeemed = [];
-          foreach ($user->owned_vouchers() as $voucher) {
-             $redeemed_voucher = App\Redeemed_voucher::where('owned_voucher_id', '=' ,$voucher->id);
-             if(!is_null($redeemed_voucher)){
-               array_push($redeemed, $redeemed_voucher);
-             }
-            array_push($redeemed, $voucher);
-          }
-          return view('profile.index', ['user' => $user ]);
+        	return view('profile', array('user' => Auth::user()) );
     }
 
 }
