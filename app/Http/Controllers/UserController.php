@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Image;
+use DB;
 
 class UserController extends Controller
 {
@@ -12,7 +13,11 @@ class UserController extends Controller
 
     public function profile(){
         $user = Auth::user();
-        return view('profile.index', ['user' => $user]);
+        $redeemed_vouchers = \App\Redeemed_voucher::with('voucher')->get();
+        $owned_vouchers = \App\Owned_voucher::with('voucher')->get();
+        return view('profile.index', ['user' => $user,
+                                      'redeemed_vouchers' => $redeemed_vouchers,
+                                      'owned_vouchers' => $owned_vouchers]);
     }
 
     public function update_avatar(Request $request){
@@ -26,7 +31,11 @@ class UserController extends Controller
         		$user->save();
         	}
           $user = Auth::user();
-          return view('profile.index', ['user' => $user]);
+          $redeemed_vouchers = \App\Redeemed_voucher::with('voucher')->get();
+          $owned_vouchers = \App\Owned_voucher::with('voucher')->get();
+          return view('profile.index', ['user' => $user,
+                                        'redeemed_vouchers' => $redeemed_vouchers,
+                                        'owned_vouchers' => $owned_vouchers]);
     }
 
 }

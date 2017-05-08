@@ -108,6 +108,7 @@ class DatabaseSeeder extends Seeder
 
       App\Redeemed_voucher::create([
         'user_id' => 1,
+        'code' => 'axt4qjhb17de',
         'voucher_id' => 1,
         'redeem_date' => '2017-05-01'
       ]);
