@@ -14,9 +14,25 @@
                 <input type="submit" class="pull-right btn btn-sm btn-primary">
             </form>
 
+            <div>
+                  <div>
+                    E-mail : {{ $user->email }}
+                  </div>
+                  <div>
+                  Point  : {{ $user->point }}
+                  </div>
+
+            </div>
           </div>
 
         </div>
+
+        {{ $user->owned_vouchers }}
+
+        {{ $user->redeemed_vouchers }}
+
+
+
     </div>
 </div>
 @endsection

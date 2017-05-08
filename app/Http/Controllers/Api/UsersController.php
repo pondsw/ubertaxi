@@ -94,22 +94,6 @@ class UsersController extends Controller
         }
     }
 
-    public function redeemed_vouchers($id)
-    {
-        $user = \App\User::find($id);
-        if (!is_null($user)) {
-            return [
-                'success' => true,
-                'data' => $user->redeemed_vouchers()->get()
-            ];
-        } else {
-            return [
-                'success' => false,
-                'data' => 'User not found'
-            ];
-        }
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
