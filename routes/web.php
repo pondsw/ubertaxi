@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('promotion', function () {
-//     return view('promotion');
-// });
+Route::get('redeem', function () {
+    return view('redeem');
+});
 
 // Route::get('vouchers', function () {
 //     return view('vouchers');
@@ -26,6 +26,7 @@ Route::get('vouchers', 'VouchersController@index');
 Route::get('vouchers/create', 'VouchersController@create');
 Route::get('promotions', 'PromotionsController@index');
 Route::get('promotions/create', 'PromotionsController@create');
+
 
 
 
