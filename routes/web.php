@@ -23,15 +23,14 @@ Route::get('/', function () {
 //     return view('vouchers');
 // });
 Route::get('vouchers', 'VouchersController@index');
+Route::get('vouchers/create', 'VouchersController@create');
 Route::get('promotions', 'PromotionsController@index');
+Route::get('promotions/create', 'PromotionsController@create');
 
 
 
 // $ composer require guzzlehttp/guzzle:~6.0
 
-Route::get('singers', 'SingersController@index');
-Route::get('singers/create', 'SingersController@create');
-Route::get('singers/{id}', 'SingersController@show');
 
 Auth::routes();
 
@@ -42,3 +41,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/profile','UserController@profile');
+Route::post('/profile','UserController@update_avatar');

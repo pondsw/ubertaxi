@@ -16,7 +16,23 @@ class DatabaseSeeder extends Seeder
           'name' => 'nathaporn',
           'email' => 'nathaporn.w@ku.th',
           'password' => '$2y$10$QnZul.swNG8x5yWNL66o/.MJ6JDhdM4Cyn51FQSnM3ql53A76wdD2',
-          'point' => 220
+          'type' => 'user',
+          'point' => 220,
+          'avatar' => '1494249683.jpg'
+        ]);
+        App\User::create([
+          'name' => 'Sitthdiech Phongsamsaun',
+          'email' => 'sitthidech.p@ku.th',
+          'password' => '$2y$10$LKRBwZ5CS5qWlNkbgLyeRODiUv2I0VuLeh/0rnAhHkAO4Oa2Ib/xe',
+          'type' => 'admin',
+          'point' => 20
+        ]);
+        App\User::create([
+          'name' => 'Pondsw',
+          'email' => 'pungpond_zaa16@hotmail.com',
+          'password' => '$2y$10$LKRBwZ5CS5qWlNkbgLyeRODiUv2I0VuLeh/0rnAhHkAO4Oa2Ib/xe',
+          'type' => 'user',
+          'point' => 300
         ]);
         App\Promotion::create([
           'name' => 'Chinese New Year',
@@ -91,7 +107,9 @@ class DatabaseSeeder extends Seeder
         }
 
       App\Redeemed_voucher::create([
-        'owned_voucher_id' => 1,
+        'user_id' => 1,
+        'code' => 'axt4qjhb17de',
+        'voucher_id' => 1,
         'redeem_date' => '2017-05-01'
       ]);
 

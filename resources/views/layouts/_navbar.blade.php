@@ -19,9 +19,21 @@
                     <li>
                         <a href="{{ url('vouchers') }}">Voucher</a>
                     </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
+                     @if (!Auth::guest())
+                      @if (Auth::user()->isAdmin())
+                        <li class="dropdown">
+                          <a  class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Add Event<span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li>
+                              <a href="{{ url('/promotions/create') }}"> Add Promotions</a>
+                            </li>
+                            <li>
+                              <a href="{{ url('/vouchers/create') }}"> Add Vouchers</a>
+                            </li>
+                          </ul>
+                        </li>
+                      @endif
+                    @endif
                     <li>
                         <a href="#">Contact</a>
                     </li>
@@ -33,7 +45,7 @@
                      <li><a href="{{ route('register') }}">Register</a></li>
                  @else
                      <li class="dropdown">
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                         <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                              {{ Auth::user()->name }} <span class="caret"></span>
                          </a>
 

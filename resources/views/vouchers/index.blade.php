@@ -10,7 +10,7 @@
               <!-- <div class="panel-heading"></div> -->
 
               <div class="panel-body">
-                  You have 2 point.
+                  You have {{ Auth::user()->point }} point.
               </div>
           </div>
         </div>
@@ -28,19 +28,23 @@
 
         <!-- Page Features -->
 
-        <div class="row text-center" >
+        <div class="row text-center"  >
 
 
             <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataVoucher">
-            <!-- <div class="col-md-3 col-sm-6 hero-feature"> -->
+
                 <div class="thumbnail">
-                    <img :src="'http://ubertaxi.dev/img/vouchers/' + d.id +'.jpg'"  height="200" >
+                    <img :src="'img/vouchers/' + d.id +'.jpg'"  height="200" >
                     <div class="caption">
                         <h3>Feature Label</h3>
                         <p>@{{ checkDetail(d.detail) }}</p>
                         <p>
+                             @if (Auth::user())
+                            <a href="#" class="btn btn-primary" v-on:click="getnow($event, {{ Auth::user()->id }})">Get Now!</a>
+                            @endif
 
-                            <a href="#" class="btn btn-primary">Get Now!</a> <a href="#" class="btn btn-default" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#myModal">More Info</a>
+                            <a href="#" class="btn btn-default" v-bind:id="d.id" v-on:click="greet" data-toggle="modal" data-target="#myModal">More Info</a>
+
 
                         </p>
                     </div>
@@ -63,9 +67,7 @@
               </div>
               <div class="modal-body">
 
-                <!-- <p>@{{ detail }}</p>
-                <p>@{{ exp_date }}</p> -->
-                <img :src="'http://ubertaxi.dev/storage/vouchers/' + id +'.jpg'"  height="200" >
+                <img :src="'img/vouchers/' + id +'.jpg'"  height="200" >
                 <div class="row">
                   <div class="col-sm-3">Detail</div>
                   <div class="col-sm-9">@{{ detail }}</div>
@@ -133,6 +135,23 @@
               this.exp_date = voucher.exp_date;
 
             }
+
+            },
+
+            getnow: function (event , id){
+              axios.post('/api/owned_vouchers', {
+                  voucher_id: this.id,
+                  user_id: id,
+                  code: 12345
+              }).then(function (response) {
+                  console.log(response.data.data);
+                  alert(response.data.data);
+                  vm.name = '';
+              }).catch(function (error) {
+                  alert('Error (see console log)');
+                  console.log(error);
+              });
+
 
           }
         }

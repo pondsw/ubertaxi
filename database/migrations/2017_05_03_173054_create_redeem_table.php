@@ -15,14 +15,22 @@ class CreateRedeemTable extends Migration
     {
       Schema::create('redeemed_vouchers', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('owned_voucher_id')->unsigned();
+          $table->integer('user_id')->unsigned();
+          $table->string('code');
+          $table->integer('voucher_id')->unsigned();
           $table->date('redeem_date');
           $table->timestamps();
           $table->softDeletes();
 
-          $table->foreign('owned_voucher_id')
+          $table->foreign('user_id')
                 ->references('id')
+                ->on('users');
+          $table->foreign('code')
+                ->references('code')
                 ->on('owned_vouchers');
+          $table->foreign('voucher_id')
+                ->references('id')
+                ->on('vouchers');
 
       });
     }

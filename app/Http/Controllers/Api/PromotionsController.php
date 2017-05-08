@@ -15,9 +15,11 @@ class PromotionsController extends Controller
     public function index()
     {
         $promotions = \App\Promotion::all();
+        // $discounts = \App\Discount::all();
         return [
             'success' => true,
             'data' => $promotions
+            // 'code' => $discounts
         ];
     }
 
@@ -84,15 +86,18 @@ class PromotionsController extends Controller
     public function discount($id)
     {
         $promotion = \App\Promotion::find($id);
+        // $discount = \App\Discount::find($id);
         if (!is_null($promotion)) {
             return [
                 'success' => true,
                 'data' => $promotion->discount()->get()
+                // 'code' => $discount->discount()->get()
             ];
         } else {
             return [
                 'success' => false,
                 'data' => 'Promotion not found'
+                // 'code' => 'Code not found'
             ];
         }
     }

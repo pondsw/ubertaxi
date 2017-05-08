@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
 
 class OwnedVoucherController extends Controller
 {
@@ -35,16 +36,32 @@ class OwnedVoucherController extends Controller
      */
     public function store(Request $request)
     {
-      $voucher = new \App\Owned_voucher;
-      $voucher->voucher_id = $request->voucher_id;
-      $voucher->user_id = $request->user_id;
-      $voucher->code = $request->code;
+      $ownvoucher = new \App\Owned_voucher;
+      $ownvoucher->voucher_id = $request->voucher_id;
+      $ownvoucher->user_id = $request->user_id;
+      // $mytime = Carbon\Carbon::now();
+      $now = new DateTime();
+      $dataCode = $request->voucher_id.$request->user_id.$now->getTimestamp();
+      $hashCode = hash('adler32', $dataCode, false);
+      $ownvoucher->code = $hashCode;
 
-      if ($voucher->save()){
+      $user = \App\User::find($request->user_id);
+      $vouchers = \App\Voucher::find($request->voucher_id);
+
+      $totalpoint = $user->point - $vouchers->point;
+      if( $totalpoint <0 ){
+        return [
+            'success' => false,
+            'data' => "Points are not enough."
+        ];
+      }
+      $user->point = $totalpoint;
+      if ($ownvoucher->save() && $user->save()){
           return [
               'success' => true,
-              'data' => "Owned voucher was saved with id: {$vouchers->id}",
-              'id' => $vouchers->id
+              'data' => "Owned voucher was saved with id: $ownvoucher->id",
+              'id' => $ownvoucher->id,
+              'resual' => $totalpoint
           ];
       } else {
           return [
