@@ -20,6 +20,9 @@
                         <a href="{{ url('vouchers') }}">Voucher</a>
                     </li>
                      @if (!Auth::guest())
+                     <li>
+                         <a href="{{ url('redeem') }}">Redeem</a>
+                     </li>
                       @if (Auth::user()->isAdmin())
                         <li class="dropdown">
                           <a  class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Add Event<span class="caret"></span></a>
