@@ -20,7 +20,7 @@
         <input type="date" class="form-control" v-model="date" id="exp_date" placeholder="">
     </div>
     <div class="form-group">
-      <label for="name">Promotion photo</label>
+      <label for="photo">Promotion photo</label>
       <input type="file" name="promotions_img">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>

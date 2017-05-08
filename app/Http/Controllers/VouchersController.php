@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VouchersController extends Controller
 {
@@ -12,6 +13,7 @@ class VouchersController extends Controller
 
   public function index()
   {
+    echo 'hhhh';
       $client = new \GuzzleHttp\Client();
       $call = "vouchers";
       $response = $client->request('GET', "{$this->api}{$call}", [

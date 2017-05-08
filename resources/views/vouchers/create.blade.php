@@ -2,54 +2,54 @@
 
 @section('content')
 <h1>Add Vouchers</h1>
-<div class="" id="vue-add-singer">
+<div class="" id="vue-add-voucher">
+
     <div class="form-group">
-        <label for="name">Title</label>
-        <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
-    </div>
-    <div class="form-group">
-        <label for="name">Detail</label>
-        <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
+        <label for="point">Point</label>
+        <input type="integer" class="form-control" v-model="point" id="point" placeholder="">
     </div>
 
     <div class="form-group">
-        <label for="name">Expiration Date</label>
-        <input type="text" class="form-control" v-model="name" id="name" placeholder="Singer Name">
+        <label for="detail">Detail</label>
+        <input type="text" class="form-control" v-model="detail" id="detail" placeholder="">
     </div>
 
-<<<<<<< Updated upstream
-=======
     <div class="form-group">
-      <label for="name">Vouchers photo</label>
-      <input type="file" name="vouchers_img"  id="image_path" >
+        <label for="exp_date">Expiration Date</label>
+        <input type="date" class="form-control" v-model="exp_date" id="exp_date" placeholder="">
+    </div>
+
+    <div class="form-group">
+        <label for="limit_number_of_use">Limit Number of use</label>
+        <input type="integer" class="form-control" v-model="limit_number_of_use" id="limit_number_of_use" placeholder="">
+    </div>
+
+
+    <div class="form-group">
+      <label for="image_path">Vouchers photo</label>
+      <input type="file" name="image_path"  id="image_path" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 
-
->>>>>>> Stashed changes
-    <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    <button class="btn btn-primary" v-on:click="submit">Submit</button>
 </div>
 @endsection
 
 @section('script')
 <script>
 var vm = new Vue({
-    el: '#vue-add-singer',
+    el: '#vue-add-voucher',
     data: {
-        'name': ''
+        'point': '',
+        'detail': '',
+        'exp_date': '',
+        'limit_number_of_use': '',
+        'image_path': ''
     },
     methods: {
-        submit: function () {
-            axios.post('http://wongklom.dev/api/singers', {
-                name: this.name
-            }).then(function (response) {
-                console.log(response.data.data);
-                alert(response.data.data);
-                vm.name = '';
-            }).catch(function (error) {
-                alert('Error (see console log)');
-                console.log(error);
-            });
+        submit: function (event) {
+          alert('HALO');
+
         }
     }
 
