@@ -39,14 +39,14 @@ class DatabaseSeeder extends Seeder
           'detail' => 'type code "CHINA" to get 50 Baht discount. This code can use unlimited times until 28 Feb. 2017',
           'start_date' => '2017-02-01',
           'exp_date' => '2017-02-28',
-          'image_path' => '{path}'
+          'image_path' => '1.jpg'
         ]);
         App\Promotion::create([
           'name' => 'Happy Halloween',
           'detail' => 'type code "HALLOWEEN" to get 50 Baht discount. This code can use up to 3 times.',
           'start_date' => '2017-08-27',
           'exp_date' => '2017-09-03',
-          'image_path' => '{path}'
+          'image_path' => '2.jpg'
         ]);
         App\Voucher::create([
           'point' => 200,
