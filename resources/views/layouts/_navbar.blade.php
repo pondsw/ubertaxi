@@ -14,24 +14,24 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ url('promotions') }}">Promotion</a>
+                        <a href="{{ url('../promotions') }}">Promotion</a>
                     </li>
                     <li>
-                        <a href="{{ url('vouchers') }}">Voucher</a>
+                        <a href="{{ url('../vouchers') }}">Voucher</a>
                     </li>
                      @if (!Auth::guest())
                      <li>
-                         <a href="{{ url('redeem') }}">Redeem</a>
+                         <a href="{{ url('../redeem') }}">Redeem</a>
                      </li>
                       @if (Auth::user()->isAdmin())
                         <li class="dropdown">
                           <a  class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Add Event<span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li>
-                              <a href="{{ url('/promotions/create') }}"> Add Promotions</a>
+                              <a href="{{ url('../promotions/create') }}"> Add Promotions</a>
                             </li>
                             <li>
-                              <a href="{{ url('/vouchers/create') }}"> Add Vouchers</a>
+                              <a href="{{ url('../vouchers/create') }}"> Add Vouchers</a>
                             </li>
                           </ul>
                         </li>
@@ -57,13 +57,13 @@
                              <li><a> You have {{ Auth::user()->point }} </span>  points </a></li>
                            </li>
                            <li>
-                             <li><a href="{{ url('/profile') }}"><img src="img/user-16.ico" > &nbsp; Profile</a></li>
+                             <li><a href="{{ url('/profile') }}"><img src="../img/user-16.ico" > &nbsp; Profile</a></li>
                            </li>
                              <li>
                                  <a href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                    <img src="img/logout-16.ico" >
+                                    <img src="../img/logout-16.ico" >
                                      &nbsp;Logout
                                  </a>
 

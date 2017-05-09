@@ -19,7 +19,7 @@ class CreateVoucherTable extends Migration
           $table->string('detail');
           $table->date('exp_date');
           $table->integer('limit_number_of_use');
-          $table->string('image_path');
+          $table->string('image_path')->default('default.jpg');
           $table->timestamps();
           $table->softDeletes();
       });
