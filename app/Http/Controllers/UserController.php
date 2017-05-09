@@ -21,10 +21,13 @@ class UserController extends Controller
         $redeemed_vouchers = \App\Redeemed_voucher::where('user_id', $user->id)->with('voucher')->get();
 
         $owned_vouchers = \App\Owned_voucher::where('user_id', $user->id)->with('voucher')->get();
+        // return view('profile.index', ['user' => $user,
+        //                               'redeemed_vouchers' => $redeemed_vouchers,
+        //                               'owned_vouchers' => $owned_vouchers]);
         return view('profile.index', ['user' => $user,
                                       'redeemed_vouchers' => $redeemed_vouchers,
                                       'owned_vouchers' => $owned_vouchers]);
-    }
+  }
 
     public function update_avatar(Request $request){
         	// Handle the user upload of avatar
