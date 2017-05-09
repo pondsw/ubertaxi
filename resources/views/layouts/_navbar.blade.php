@@ -13,6 +13,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                  @if (!Auth::guest())
+                  <li>
+                      <a href="{{ url('/#booktaxi') }}">Book Texi</a>
+                  </li>
+                  @endif
                     <li>
                         <a href="{{ url('../promotions') }}">Promotion</a>
                     </li>
@@ -21,7 +26,7 @@
                     </li>
                      @if (!Auth::guest())
                      <li>
-                         <a href="{{ url('../redeem') }}">Redeem</a>
+                         <a href="{{ url('../redeem') }}">Redeem<small> for test</small></a>
                      </li>
                       @if (Auth::user()->isAdmin())
                         <li class="dropdown">
