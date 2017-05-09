@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+
 <div class="container" id='vue-app-vouchers'>
+
 
 
     <!-- Jumbotron Header -->
@@ -50,7 +52,7 @@
 @section('script')
 <script>
     var vm = new Vue({
-        el: '#vue-app-vouchers',
+        el: '#vue-app-redeem',
 
         data:{
 
