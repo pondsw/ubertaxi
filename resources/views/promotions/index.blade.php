@@ -28,7 +28,7 @@
         <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataPromotion">
         <!-- <div class="col-md-3 col-sm-6 hero-feature"> -->
             <div class="thumbnail">
-                <img :src="'http://ubertaxi.dev/img/promotions/' + d.id +'.jpg'"  height="200" >
+                <img :src="'http://ubertaxi.dev/img/promotions/' +d.image_path"  height="200" >
                 <div class="caption">
                     <h3>@{{ checkDetail(d.name) }}</h3>
                   </br>

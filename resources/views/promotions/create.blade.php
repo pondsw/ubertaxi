@@ -2,61 +2,32 @@
 
 @section('content')
 <h1>Add Promotion</h1>
-<div class="" id="vue-add-promotion">
+<div class="">
+  <form enctype="multipart/form-data" action="create" method="POST">
     <div class="form-group">
         <label for="name">Promotion Name</label>
-        <input type="text" class="form-control" v-model="name" id="name" placeholder="">
+        <input type="text" class="form-control" name="name" id="name" placeholder="">
     </div>
     <div class="form-group">
         <label for="detail">Promotion Detail</label>
-        <input type="text" class="form-control" v-model="detail" id="detail" placeholder="">
+        <input type="text" class="form-control" name="detail" id="detail" placeholder="">
     </div>
     <div class="form-group">
         <label for="start">Start Date</label>
-        <input type="date" class="form-control" v-model="start_date" id="start_date" placeholder="">
+        <input type="date" class="form-control" name="start_date" id="start_date" placeholder="">
     </div>
     <div class="form-group">
         <label for="exp">Expiration Date</label>
-        <input type="date" class="form-control" v-model="exp_date" id="exp_date" placeholder="">
+        <input type="date" class="form-control" name="exp_date" id="exp_date" placeholder="">
     </div>
     <div class="form-group">
       <label for="name">Promotion photo</label>
-      <input type="file" name="promotions_img">
+      <input type="file" name="image_path">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 
-    <button class="btn btn-primary" v-on:click="submit">Submit</button>
+    <button class="btn btn-primary">Submit</button>
+  </form>
 </div>
-@endsection
 
-@section('script')
-<script>
-var vm = new Vue({
-    el: '#vue-add-promotion',
-    data: {
-        name: '',
-        detail :'',
-        start_date:'',
-        exp_date:'',
-        image_path:''
-    },
-
-    methods: {
-        submit: function (event) {
-            axios.post('http://ubertaxi.dev/api/promotions', {
-                name: this.name,
-                detail: this.detail,
-                start_date: this.start_date,
-                exp_date: this.exp_date,
-                image_path: this.image_path
-            }).then(function (response) {
-                alert(response.data.data);
-            }).catch(function (error) {
-                alert('Error (see console log)');
-                console.log(error);
-            });
-        }
-    }
-});
-</script>
 @endsection

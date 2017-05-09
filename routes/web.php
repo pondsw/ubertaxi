@@ -27,6 +27,7 @@ Route::get('vouchers/create', 'VouchersController@create');
 Route::post('vouchers/create','VouchersController@craeteVoucher');
 Route::get('promotions', 'PromotionsController@index');
 Route::get('promotions/create', 'PromotionsController@create');
+Route::post('promotions/create', 'PromotionsController@createPromotion');
 
 
 
