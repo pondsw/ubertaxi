@@ -39,8 +39,16 @@ class RedeemedVoucherController extends Controller
       // echo $request->code;
       $ownedVoucher = \App\Owned_voucher::where('code', $request->code)->first();
 
+      if($ownedVoucher->user_id != $request->id){
+        return [
+            'success' => false,
+            'data' => "Can use this voucher"
+        ];
+      }
       // echo $ownedVoucher;
       $voucher = \App\Voucher::find($ownedVoucher->voucher_id);
+
+
       $date1 = new DateTime();
       $date2 = new DateTime($voucher->exp_date);
       // echo $date1;
@@ -60,14 +68,10 @@ class RedeemedVoucherController extends Controller
       $redemmVoucher->code = $request->code;
       $redemmVoucher->user_id = $ownedVoucher->user_id;
 
-
-
-
       if ($redemmVoucher->save() && $ownedVoucher->delete()){
           return [
               'success' => true,
-              'data' => "Redeemed voucher was saved with id: {$redemmVoucher->id}",
-              'id' => $redemmVoucher->id
+              'data' => "Voucher code".$request->code." has reneem success."
           ];
       } else {
           return [

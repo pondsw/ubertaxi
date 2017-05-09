@@ -21,6 +21,7 @@ Route::get('promotions/{id}/discount', 'Api\PromotionsController@discount');
 Route::resource('promotions', 'Api\PromotionsController');
 
 Route::resource('vouchers', 'Api\VouchersController');
+Route::post('vouchers/store', 'Api\VouchersController@store');
 
 Route::get('users/{id}/owned_vouchers', 'Api\UsersController@owned_vouchers');
 Route::get('users/{id}/redeemed_discounts', 'Api\UsersController@redeemed_discounts');

@@ -36,8 +36,8 @@ class RedeemedDiscountController extends Controller
     public function store(Request $request)
     {
       $discount = new \App\Redeemed_discount;
-      $discount->discount_id = $request->discount_id;
-      $discount->user_id = $request->user_id;
+      $discount->discount_id = $request->code;
+      $discount->user_id = $request->id;
       $discount->redeem_date = date("Y-m-d");
 
       if ($discount->save()){

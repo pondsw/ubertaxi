@@ -34,9 +34,9 @@
             <div class="col-md-3 col-sm-6 hero-feature" v-for="d in dataVoucher">
 
                 <div class="thumbnail">
-                    <img :src="'img/vouchers/' + d.id +'.jpg'"  height="200" >
+                    <img :src="'img/vouchers/' + d.image_path"  height="200" >
                     <div class="caption">
-                        <h3>Feature Label</h3>
+                        <h3>@{{ d.point }} points</h3>
                         <p>@{{ checkDetail(d.detail) }}</p>
                         <p>
                              @if (Auth::user())
@@ -68,6 +68,10 @@
               <div class="modal-body">
 
                 <img :src="'img/vouchers/' + id +'.jpg'"  height="200" >
+                <div class="row">
+                  <div class="col-sm-3">Detail</div>
+                  <div class="col-sm-9">@{{ detail }}</div>
+                </div>
                 <div class="row">
                   <div class="col-sm-3">Detail</div>
                   <div class="col-sm-9">@{{ detail }}</div>
@@ -111,7 +115,8 @@
           showModal : false,
           detail : "",
           exp_date :"",
-          id : 1
+          id : 1,
+          point: 0
         },
         methods:{
           checkDetail: function(contend) {
@@ -133,6 +138,7 @@
               this.id = voucher.id;
               this.detail = voucher.detail;
               this.exp_date = voucher.exp_date;
+              this.point = voucher.point;
 
             }
 
@@ -144,9 +150,14 @@
                   user_id: id,
                   code: 12345
               }).then(function (response) {
-                  console.log(response.data.data);
-                  alert(response.data.data);
-                  vm.name = '';
+                  // console.log(response.data.data);
+                  // alert(response.data.success);
+                  // vm.name = '';
+                  if(response.data.success){
+                    
+                  }else{
+                    alert(response.data.data);
+                  }
               }).catch(function (error) {
                   alert('Error (see console log)');
                   console.log(error);

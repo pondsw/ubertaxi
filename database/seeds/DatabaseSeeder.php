@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
           'email' => 'sitthidech.p@ku.th',
           'password' => '$2y$10$LKRBwZ5CS5qWlNkbgLyeRODiUv2I0VuLeh/0rnAhHkAO4Oa2Ib/xe',
           'type' => 'admin',
-          'point' => 20
+          'point' => 2000
         ]);
         App\User::create([
           'name' => 'Pondsw',
@@ -53,14 +53,14 @@ class DatabaseSeeder extends Seeder
           'detail' => 'Tesco discount 200 Baht',
           'exp_date' => '2017-12-31',
           'limit_number_of_use' => 1,
-          'image_path' => '{path}'
+          'image_path' => '1.jpg'
         ]);
         App\Voucher::create([
           'point' => 350,
           'detail' => 'Major Cineples discount 100 Baht when purchase 2 tickets',
           'exp_date' => '2017-07-31',
           'limit_number_of_use' => 1,
-          'image_path' => '{path}'
+          'image_path' => '2.jpg'
         ]);
 
         $promotion = App\Promotion::where('name', '=', 'Chinese New Year')->first();

@@ -46,13 +46,12 @@ class PromotionsController extends Controller
         $promotion->detail = trim($request->detail);
         $promotion->start_date = $request->start_date;
         $promotion->exp_date = $request->exp_date;
-        $promotion->image_path = $request->image_path;
+        // $promotion->image_path = $request->image_path;
 
         if (!empty($promotion->name) && !empty($promotion->detail) && $promotion->save()){
             return [
                 'success' => true,
-                'data' => "Promotion '{$promotion->name}' was saved with id: {$promotion->id}",
-                'id' => $promotion->id
+                'data' => "Promotion '{$promotion->name}' was created",
             ];
         } else {
             return [

@@ -44,18 +44,18 @@ class VouchersController extends Controller
         $vouchers->detail = trim($request->detail);
         $vouchers->exp_date = $request->exp_date;
         $vouchers->limit_number_of_use = $request->limit_number_of_use;
-        
+        $vouchers->image_path = $request->image_path;
 
         if (!empty($vouchers->point) && !empty($vouchers->detail) && !empty($vouchers->exp_date) && $vouchers->save()){
             return [
                 'success' => true,
-                'data' => "Voucher was saved with id: {$vouchers->id}",
-                'id' => $vouchers->id
+                'data' => "Voucher ".$vouchers->detail."was create. "
+
             ];
         } else {
             return [
                 'success' => false,
-                'data' => "Some error occurred"
+                'data' => $request->detail
             ];
         }
 
